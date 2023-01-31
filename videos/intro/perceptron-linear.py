@@ -24,14 +24,12 @@ labels = range(10)
 num_classes = y_train.shape[1]
 
 # create model
-model=Sequential()
-model.add(Flatten(input_shape=(img_width,img_height)))
+model = Sequential()
+model.add(Flatten(input_shape=(img_width, img_height)))
 model.add(Dense(num_classes))
 model.compile(loss='mse', optimizer='adam',
-                metrics=['accuracy'])
+              metrics=['accuracy'])
 
 # Fit the model
 model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test),
-                    callbacks=[WandbCallback(labels=labels, data_type="image")])
-
-
+          callbacks=[WandbCallback(labels=labels, data_type="image")])
